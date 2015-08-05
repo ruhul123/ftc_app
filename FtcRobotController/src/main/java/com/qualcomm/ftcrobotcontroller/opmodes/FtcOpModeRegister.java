@@ -33,7 +33,9 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
-
+import com.techietitans.opmodes.FirstOpMode;
+import com.techietitans.opmodes.KeyPadFlashOp;
+import com.techietitans.opmodes.LightSenseOp;
 /**
  * Register Op Modes
  */
@@ -92,11 +94,17 @@ public class FtcOpModeRegister implements OpModeRegister {
      *  - PushBotSquare uses the LinearOpMOde class and shows how to drive in a square pattern autonomously.
      */
 
+    /* MRC- commented out for Development
     manager.register("PushBotManual", PushBotManual.class);
     manager.register("PushBotAuto", PushBotAuto.class);
     manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
     manager.register("PushBotIrSeek", PushBotIrSeek.class);
     manager.register("PushBotSquare", PushBotSquare.class);
+    */
+    manager.register("FirstOpMode", FirstOpMode.class);
+    manager.register("KeyPadFlashOp", KeyPadFlashOp.class);
+    manager.register("LightSenseOp", LightSenseOp.class);
+
 
   }
 }
