@@ -2,6 +2,7 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 /**
@@ -14,18 +15,21 @@ public class PushBotDriveTouch extends LinearOpMode {
     DcMotor leftMotor;
     DcMotor rightMotor;
     TouchSensor touchSensor;
+    OpticalDistanceSensor opticalDistanceSensor;
 
     @Override
     public void runOpMode() throws InterruptedException {
         // Get references to the motors from the hardware map
-        leftMotor = hardwareMap.dcMotor.get("left_drive");
-        rightMotor = hardwareMap.dcMotor.get("right_drive");
+        leftMotor = hardwareMap.dcMotor.get("motor_2");
+        rightMotor = hardwareMap.dcMotor.get("motor_1");
 
         // Reverse the right motor
         rightMotor.setDirection(DcMotor.Direction.REVERSE);
 
         // Get a reference to the touch sensor
         touchSensor = hardwareMap.touchSensor.get("sensor_touch");
+        // Get a reference to the touch sensor
+        opticalDistanceSensor = hardwareMap.opticalDistanceSensor.get("sensor_dist");
 
         // Wait for the start button to be pressed
         waitForStart();
@@ -42,6 +46,8 @@ public class PushBotDriveTouch extends LinearOpMode {
             }
 
             telemetry.addData("isPressed", String.valueOf(touchSensor.isPressed()));
+            telemetry.addData("OpticalDist Scaled", String.valueOf(opticalDistanceSensor.getLightDetected()));
+            telemetry.addData("OpticalDist Raw", String.valueOf(opticalDistanceSensor.getLightDetectedRaw()));
 
             // Wait for a hardware cycle to allow other processes to run
             waitOneHardwareCycle();
