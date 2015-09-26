@@ -50,7 +50,7 @@ public class PushBotDriveTouch extends LinearOpMode {
             telemetry.addData("OpticalDist Raw", String.valueOf(opticalDistanceSensor.getLightDetectedRaw()));
 
             // Wait for a hardware cycle to allow other processes to run
-            waitOneHardwareCycle();
+            waitOneFullHardwareCycle();
         }
 
     }
